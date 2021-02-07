@@ -1,0 +1,18 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app>
+	<display-name>Steal My Idea</display-name>
+  	<servlet>
+      	<servlet-name>stealmyidea</servlet-name>
+      	<servlet-class>com.stealmyidea.StealMyIdeaServlet</servlet-class>
+   	</servlet>
+   	<servlet-mapping>
+      	<servlet-name>stealmyidea</servlet-name>
+      	<url-pattern>/stealmyidea</url-pattern>
+   	</servlet-mapping>
+   	<servlet-mapping>
+      	<servlet-name>stealmyidea</servlet-name>
+      	<url-pattern>/idea</url-pattern>
+   	</servlet-mapping>
+</web-app>

@@ -1,0 +1,132 @@
+html, body {
+/*	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	*/
+}
+
+.header {
+	width: 100%;
+	text-align: center;
+}
+
+.ideas-container {
+	
+}
+
+.idea-container {
+	border-bottom: thin solid black;
+}
+
+.idea-common-container {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.idea-common-label {
+	margin-right: 5px;	
+}
+
+.idea-common-content {
+	
+}
+
+.idea-idea-container {
+	
+}
+
+.idea-idea-label {
+	
+}
+
+.idea-idea-content {
+	
+}
+
+.idea-date-container {
+	
+}
+
+.idea-date-label {
+	
+}
+
+.idea-date-content {
+	
+}
+
+.idea-steal-status-container {
+	
+}
+
+.idea-steal-status-label {
+	
+}
+
+.idea-steal-status-content {
+	
+}
+
+.idea-steal-status-description-container {
+	
+}
+
+.idea-steal-status-description-label {
+	
+}
+
+.idea-steal-status-description-content {
+	
+}
+
+.idea-greatness-container {
+	
+}
+
+.idea-greatness-label {
+	
+}
+
+.idea-greatness-content {
+	
+}
+
+.idea-description-container {
+	
+}
+
+.idea-description-content {
+	
+}
+
+
+
+/*
+var ideaHtml = '<div id="idea-container-' + idea.ideaId + '" class="idea-container" style="border-bottom: thin solid black;">' + 
+						'<div id="idea-idea-container-' + idea.ideaId + " class="idea-idea-container">' + 
+							'<span class="idea-idea-label">Idea:</span>' +
+							'<span class="idea-idea-content">' + nullToEmpty(idea.idea) + '</span>' + 
+						'</div>' +
+						'<div id="idea-date-container-' + idea.ideaId + '" class="idea-date-container">' + 
+							'<span class="idea-date-label">Idea:</span>' +
+							'<span class="idea-date-content">' + nullToEmpty(idea.ideaDate) + '</span>' + 
+						'</div>' +
+						'<div id="idea-steal-status-container-' + idea.ideaId + '" class="idea-steal-status-container">' + 
+							'<span class="idea-steal-status-label">Has it been stolen:</span>' +
+							'<span class="idea-steal-status-content">' + nullToEmpty(idea.stealStatus) + '</span>' + 
+						'</div>' +
+						'<div id="idea-steal-status-description-container-' + idea.ideaId + '" class="idea-steal-status-description-container">' + 
+							'<span class="idea-steal-status-description-label">How was it stolen:</span>' +
+							'<span class="idea-steal-status-description-content">' + nullToEmpty(idea.stealStatusDescription) + '</span>' + 
+						'</div>' +
+						'<div id="idea-greatness-container-' + idea.ideaId + '" class="idea-greatness-container">' + 
+							'<span class="idea-greatness-label">Greatness:</span>' +
+							'<span class="idea-greatness-content">' + nullToEmpty(idea.greatness) + '</span>' + 
+						'</div>' +
+						'<div id="idea-description-container-' + idea.ideaId + '" class="idea-description-container>' +
+							nullToEmpty(idea.description) +
+						'</div>' + 
+					'</div>';
+*/
+
