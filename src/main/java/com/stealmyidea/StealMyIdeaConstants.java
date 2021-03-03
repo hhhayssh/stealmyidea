@@ -11,11 +11,13 @@ public interface StealMyIdeaConstants {
 	
 	public static final String STATUS_ERROR = "ERROR";
 	
-	public static final String STATUS_CODE_IDEA_ALREADY_EXISTS = "IDEA_ALREADY_EXISTS";
-	
 	public static final String STATUS_DELETED = "DELETED";
 	
 	public static final String STATUS_AVAILABLE = "AVAILABLE"; 
+	
+	public static final String STATUS_CODE_IDEA_ALREADY_EXISTS = "IDEA_ALREADY_EXISTS";
+	
+	public static final String STATUS_CODE_BAD_IDEA = "BAD_IDEA";
 	
 	public static final int IDEA_MAX_LENGTH = 100;
 	

@@ -1,4 +1,4 @@
-package com.stealmyidea;
+package com.stealmyidea.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.stealmyidea.StealMyIdeaConstants;
 import com.stealmyidea.model.Idea;
 
 public class JSONUtil {

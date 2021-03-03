@@ -10,6 +10,8 @@ import org.apache.log4j.Logger;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
 
+import com.stealmyidea.util.Util;
+
 /**
  * 
  * This class is basically a globally (to the jvm) accessible object so that

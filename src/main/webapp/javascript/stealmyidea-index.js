@@ -9,6 +9,22 @@ $(document).ready(
 		loadIdeasAndInitialize();
 });
 
+var GLOBAL_IDEA_CONTAINER = {
+		offset: 0,
+		size: 4,
+		sortFieldName: 'ideaNumber',
+		sortDirection: 'descending',
+		loadMoreIdeas: true
+};
+
+window.onscroll = function(ev) {
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+      if (GLOBAL_IDEA_CONTAINER.loadMoreIdeas){
+    	  loadIdeas();
+      }
+    }
+};
+
 function loadIdeasAndInitialize(){
 	loadIdeas();
 }
@@ -37,7 +53,7 @@ function doesResponseHaveMessages(response){
 		return false;
 	}
 	
-	var messages = repsonse.messages;
+	var messages = response.messages;
 	if (!isEmpty(messages)){
 		return true;
 	}
@@ -45,11 +61,27 @@ function doesResponseHaveMessages(response){
 	return false;
 }
 
+function updateCurrentOffset(){
+	
+	var currentOffset = GLOBAL_IDEA_CONTAINER.offset;
+	var size = GLOBAL_IDEA_CONTAINER.size;
+	
+	var newOffset = currentOffset + size;
+	GLOBAL_IDEA_CONTAINER.offset = newOffset;
+}
+
 function loadIdeas(){
 	
 	showLoadingContainer();
 	
-	$.ajax({url: 'stealmyidea?target=ideas',
+	var offset = GLOBAL_IDEA_CONTAINER.offset;
+	var size = GLOBAL_IDEA_CONTAINER.size;
+	var sortFieldName = GLOBAL_IDEA_CONTAINER.sortFieldName;
+	var sortDirection = GLOBAL_IDEA_CONTAINER.sortDirection;
+	
+	var url = 'ideas?target=ideas&offset=' + offset + '&size=' + size + '&sortFieldName=' + sortFieldName + '&sortDirection=' + sortDirection;
+	
+	$.ajax({url: url,
 		contentType: 'application/json; charset=UTF-8'}
 	)
 	.done(function(data) {
@@ -64,9 +96,13 @@ function loadIdeas(){
 			var ideas = response.data;
 			
 			if (ideas.length == 0){
-				$('#main-content-container').append('<div>No ideas to be found! Move along, sonny!</div>');
+				$('#messages-container').empty();
+				$('#messages-container').append('<div style="width: 100%; text-align: center; margin-top: 20px;">No more ideas to be found! Move along, sonny!</div>');
+				GLOBAL_IDEA_CONTAINER.loadMoreIdeas = false;
 				return;
 			}
+			
+			updateCurrentOffset();
 			
 			var ideasHtml = createIdeasHtml(ideas);
 			$('#main-content-container').append(ideasHtml);
@@ -74,6 +110,8 @@ function loadIdeas(){
 		else {
 			if (doesResponseHaveMessages(response)){
 				$('#messages-container').empty();
+				console.log('messages...');
+				console.log(response.messages);
 				var messagesHtml = createMessagesHtml(response.messages);
 				$('#messages-container').append(messagesHtml);
 			}

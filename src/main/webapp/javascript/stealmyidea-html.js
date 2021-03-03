@@ -1,12 +1,3 @@
-/*
- <div style="border-bottom: thin solid black;">
-				<p>Idea: 3DTV</p>
-				<p>Date: 1998</p>
-				<p>Has it been stolen: Apparently ... only took 22 years ... <a href="https://lookingglassfactory.com/">https://lookingglassfactory.com/</a></p>
-				<p>Greatness: off the charts</p>
-				<p>A tv could be a cube and you could walk around it and see stuff from different angles.  Kind of like a hologram in a box.</p>
-			</div>
- */
 
 function createMessagesHtml(messages){
 	
@@ -21,7 +12,7 @@ function createMessagesHtml(messages){
 	
 	messagesHtml = messagesHtml + '</div>';
 	
-	return messgaesHtml;
+	return messagesHtml;
 }
 
 function createMessageHtml(message){
@@ -50,14 +41,11 @@ function createIdeasHtml(ideas){
 
 function createIdeaHtml(idea){
 
-	/*
-	 '<div id="idea-steal-status-container-' + idea.ideaId + '" class="idea-steal-status-container">' + 
-							'<span class="idea-steal-status-label">Has it been stolen?</span>' +
-							'<span class="idea-steal-status-content">' + nullToEmpty(idea.stealStatus) + '</span>' + 
+	var ideaHtml = '<div id="idea-container-' + idea.ideaId + '" class="idea-container">' +
+						'<div id="idea-number-container-' + idea.ideaId + '" class="idea-common-container idea-number-container">' + 
+							'<span class="idea-common-label idea-idea-number-label">Idea number:</span>' +
+							'<span class="idea-common-content idea-idea-number-content">' + nullToEmpty(idea.ideaNumber) + '</span>' + 
 						'</div>' +
-	 */
-	
-	var ideaHtml = '<div id="idea-container-' + idea.ideaId + '" class="idea-container">' + 
 						'<div id="idea-idea-container-' + idea.ideaId + '" class="idea-common-container idea-idea-container">' + 
 							'<span class="idea-common-label idea-idea-label">Idea:</span>' +
 							'<span class="idea-common-content idea-idea-content">' + nullToEmpty(idea.idea) + '</span>' + 

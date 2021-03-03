@@ -1,4 +1,4 @@
-package com.stealmyidea;
+package com.stealmyidea.util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

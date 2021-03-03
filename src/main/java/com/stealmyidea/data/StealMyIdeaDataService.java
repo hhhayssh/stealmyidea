@@ -1,4 +1,4 @@
-package com.stealmyidea;
+package com.stealmyidea.data;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,9 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.apache.tomcat.jdbc.pool.DataSource;
 
+import com.stealmyidea.StealMyIdeaConstants;
 import com.stealmyidea.model.Idea;
+import com.stealmyidea.util.DatabaseUtil;
 
 public class StealMyIdeaDataService {
 	
@@ -29,6 +31,9 @@ public class StealMyIdeaDataService {
 	
 	protected static final String SELECT_IDEA = "select idea_id, idea_number, idea, idea_date, steal_status, steal_status_description, greatness, description, status, status_date, enter_date, modification_date " + 
 												"from idea ";
+	
+	protected static final String SELECT_IDEA_COUNT = "select count(*) " + 
+													  "from idea ";
 	
 	protected static final String INSERT_IDEA = "insert into idea (idea, idea_date, steal_status, steal_status_description, greatness, description, status, status_date, enter_date) " +
 												"values (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
@@ -101,6 +106,64 @@ public class StealMyIdeaDataService {
 				StealMyIdeaConstants.DEFAULT_SORT_DIRECTION, StealMyIdeaConstants.DEFAULT_OFFSET, StealMyIdeaConstants.DEFAULT_SIZE);
 		
 		return defaultIdeas;
+	}
+	
+	public Integer getIdeaCount() {
+		
+		Integer ideaCount = getIdeaCount(null, null, null, null, null, null, null, null, null, null);
+		
+		return ideaCount;
+	}
+	
+	public Integer getIdeaCount(Long ideaId, Long ideaNumber, String idea, String ideaDate, String stealStatus, String stealStatusDescription, 
+			String greatness, String description, Date enterDate, Date modificationDate) {
+
+		Integer ideaCount = null;
+		
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet results = null;
+		
+		List<Idea> ideas = new ArrayList<Idea>();
+		
+		StringBuilder stringBuilder = new StringBuilder(SELECT_IDEA_COUNT);
+		List<Object> parameters = new ArrayList<Object>();
+		
+		addParameter(stringBuilder, "idea_id", ideaId, parameters, false);
+		addParameter(stringBuilder, "idea_number", ideaNumber, parameters, false);
+		addParameter(stringBuilder, "idea", idea, parameters, false);
+		addParameter(stringBuilder, "idea_date", ideaDate, parameters, false);
+		addParameter(stringBuilder, "steal_status", stealStatus, parameters, false);
+		addParameter(stringBuilder, "steal_status_description", stealStatusDescription, parameters, false);
+		addParameter(stringBuilder, "greatness", greatness, parameters, false);
+		addParameter(stringBuilder, "description", description, parameters, false);
+		addParameter(stringBuilder, "enter_date", enterDate, parameters, false);
+		addParameter(stringBuilder, "modification_date", modificationDate, parameters, false);
+		addParameter(stringBuilder, "status", StealMyIdeaConstants.STATUS_AVAILABLE, parameters, false);
+		
+		String query = stringBuilder.toString();
+		
+		try {
+			connection = getConnection();
+			statement = connection.prepareStatement(query);
+			
+			setParameterValues(statement, parameters);
+			
+			results = statement.executeQuery();
+			
+			while (results.next()){
+				ideaCount = results.getInt(0);
+			}
+		}
+		catch (Exception e){
+			log.error("Error getting seasons!", e);
+			rollback(connection);
+		}
+		finally {
+			close(results, statement, connection);
+		}
+		
+		return ideaCount;
 	}
 	
 	public List<Idea> getIdeas(Long ideaId, Long ideaNumber, String idea, String ideaDate, String stealStatus, String stealStatusDescription, 

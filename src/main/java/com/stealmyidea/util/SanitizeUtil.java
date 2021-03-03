@@ -1,9 +1,11 @@
-package com.stealmyidea;
+package com.stealmyidea.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import com.stealmyidea.StealMyIdeaConstants;
 
 public class SanitizeUtil {
 	
@@ -176,7 +178,7 @@ public class SanitizeUtil {
 			return false;
 		}
 		
-		if (length >= maxLength) {
+		if (length > maxLength) {
 			return false;
 		}
 		

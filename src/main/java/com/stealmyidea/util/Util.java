@@ -1,4 +1,4 @@
-package com.stealmyidea;
+package com.stealmyidea.util;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;

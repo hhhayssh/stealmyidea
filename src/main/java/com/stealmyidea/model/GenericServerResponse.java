@@ -63,7 +63,7 @@ public class GenericServerResponse {
 	}
 	
 	public void addMessages(List<String> messages) {
-		messages.addAll(messages);
+		this.messages.addAll(messages);
 	}
 
 	public List<String> getMessages() {

@@ -22,10 +22,10 @@ function postIdea(){
 	
 	var ideaJsonToSend = JSON.stringify(idea);
 	
-	$.ajax({url: 'idea?target=idea',
-		method: 'POST',
-		data: ideaJsonToSend,
-		contentType: 'application/json; charset=UTF-8'}
+	$.ajax({url: 'add',
+			method: 'POST',
+			data: ideaJsonToSend,
+			contentType: 'application/json; charset=UTF-8'}
 	)
 	.done(function(data) {
 		console.log('data..');

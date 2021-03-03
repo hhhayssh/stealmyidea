@@ -8,7 +8,7 @@ html, body {
 
 .header {
 	width: 100%;
-	text-align: center;
+	text-align: left;
 }
 
 .ideas-container {
@@ -29,6 +29,18 @@ html, body {
 }
 
 .idea-common-content {
+	
+}
+
+.idea-idea-number-container {
+	
+}
+
+.idea-idea-number-label {
+	
+}
+
+.idea-idea-number-content {
 	
 }
 
@@ -102,31 +114,6 @@ html, body {
 
 
 
-/*
-var ideaHtml = '<div id="idea-container-' + idea.ideaId + '" class="idea-container" style="border-bottom: thin solid black;">' + 
-						'<div id="idea-idea-container-' + idea.ideaId + " class="idea-idea-container">' + 
-							'<span class="idea-idea-label">Idea:</span>' +
-							'<span class="idea-idea-content">' + nullToEmpty(idea.idea) + '</span>' + 
-						'</div>' +
-						'<div id="idea-date-container-' + idea.ideaId + '" class="idea-date-container">' + 
-							'<span class="idea-date-label">Idea:</span>' +
-							'<span class="idea-date-content">' + nullToEmpty(idea.ideaDate) + '</span>' + 
-						'</div>' +
-						'<div id="idea-steal-status-container-' + idea.ideaId + '" class="idea-steal-status-container">' + 
-							'<span class="idea-steal-status-label">Has it been stolen:</span>' +
-							'<span class="idea-steal-status-content">' + nullToEmpty(idea.stealStatus) + '</span>' + 
-						'</div>' +
-						'<div id="idea-steal-status-description-container-' + idea.ideaId + '" class="idea-steal-status-description-container">' + 
-							'<span class="idea-steal-status-description-label">How was it stolen:</span>' +
-							'<span class="idea-steal-status-description-content">' + nullToEmpty(idea.stealStatusDescription) + '</span>' + 
-						'</div>' +
-						'<div id="idea-greatness-container-' + idea.ideaId + '" class="idea-greatness-container">' + 
-							'<span class="idea-greatness-label">Greatness:</span>' +
-							'<span class="idea-greatness-content">' + nullToEmpty(idea.greatness) + '</span>' + 
-						'</div>' +
-						'<div id="idea-description-container-' + idea.ideaId + '" class="idea-description-container>' +
-							nullToEmpty(idea.description) +
-						'</div>' + 
-					'</div>';
-*/
-
+.add-idea-question-container {
+	margin-top: 15px;
+}

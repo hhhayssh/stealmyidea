@@ -2,17 +2,31 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 <web-app>
+<!-- 
+	/index.html
+	/edit/index.html?ideaNumber=1
+	/add/index.html
+	/report/index.html?ideaNumber=1
+ -->
 	<display-name>Steal My Idea</display-name>
   	<servlet>
       	<servlet-name>stealmyidea</servlet-name>
-      	<servlet-class>com.stealmyidea.StealMyIdeaServlet</servlet-class>
+      	<servlet-class>com.stealmyidea.servlet.StealMyIdeaMainServlet</servlet-class>
+   	</servlet>
+   	<servlet>
+      	<servlet-name>stealmyidea-add</servlet-name>
+      	<servlet-class>com.stealmyidea.servlet.StealMyIdeaAddServlet</servlet-class>
+   	</servlet>
+   	<servlet>
+      	<servlet-name>stealmyidea-edit</servlet-name>
+      	<servlet-class>com.stealmyidea.servlet.StealMyIdeaEditServlet</servlet-class>
    	</servlet>
    	<servlet-mapping>
       	<servlet-name>stealmyidea</servlet-name>
-      	<url-pattern>/stealmyidea</url-pattern>
+      	<url-pattern>/ideas</url-pattern>
    	</servlet-mapping>
    	<servlet-mapping>
-      	<servlet-name>stealmyidea</servlet-name>
-      	<url-pattern>/idea</url-pattern>
+      	<servlet-name>stealmyidea-add</servlet-name>
+      	<url-pattern>/add</url-pattern>
    	</servlet-mapping>
 </web-app>
