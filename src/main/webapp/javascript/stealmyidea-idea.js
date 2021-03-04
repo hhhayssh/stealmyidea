@@ -29,7 +29,7 @@ function loadIdea(){
 			
 			if (isEmpty(ideas)){
 				$('#content-container').empty();
-				$('#content-container').append('I have an idea ... Try looking for a valid idea.');
+				$('#content-container').append('<p>I have an idea ... Try looking for a valid idea.</p>');
 				return;
 			}
 			

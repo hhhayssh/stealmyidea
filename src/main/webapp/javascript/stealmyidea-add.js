@@ -1,10 +1,10 @@
-function postIdea(){
-	disablePostButton();
+function addIdea(){
+	disableAddButton();
 	
 	var isIdeaOk = checkIdea();
 	
 	if (!isIdeaOk){
-		enablePostButton();
+		enableAddButton();
 		return;
 	}
 	
@@ -29,19 +29,19 @@ function postIdea(){
 		var response = $.parseJSON(data);
 		
 		if ('SUCCESS' == response.status){
-			hidePostButton();
-			$('#message-container-post').append('<div>Your idea was successfully posted ... Yoink!  You can see it on the <a href="index.html">front page</a> now.</div>');
+			hideAddButton();
+			$('#message-container-add').append('<div>Your idea was successfully added ... Yoink!  You can see it on the <a href="index.html">front page</a> now.</div>');
 		}
 		else if ('ERROR' == response.status){
-			showPostButton();
-			enablePostButton();
+			showAddButton();
+			enableAddButton();
 			
 			if (!isEmpty(response.messages)){
 				var messageHtml = '';
 				
 				for (var index = 0; index < response.messages.length; index++){
 					var message = response.messages[index];
-					$('#message-container-post').append('<div>' + message + '</div>');
+					$('#message-container-add').append('<div>' + message + '</div>');
 				}
 			}
 			
@@ -67,7 +67,7 @@ function checkIdea(){
 
 	var idea = $('#idea').val();
 	if (isBlank(idea)){
-		$('#message-container-idea').append('<span>Hey, man, can\'t post your idea if you don\'t put in something!</span>');
+		$('#message-container-idea').append('<span>Hey, man, can\'t add your idea if you don\'t put in something!</span>');
 		error = true;
 	}
 	else {
@@ -114,22 +114,22 @@ function checkIdea(){
 	return true;
 }
 
-function disablePostButton(){
-	$('#post-button').prop('value', 'Posting...');
-	$('#post-button').prop('disabled', true);
+function disableAddButton(){
+	$('#add-button').prop('value', 'Adding...');
+	$('#add-button').prop('disabled', true);
 }
 
-function enablePostButton(){
-	$('#post-button').prop('value', 'Post it!');
-	$('#post-button').prop('disabled', false);
+function enableAddButton(){
+	$('#add-button').prop('value', 'Add it!');
+	$('#add-button').prop('disabled', false);
 }
 
-function hidePostButton(){
-	$('#post-button').hide();
+function hideAddButton(){
+	$('#add-button').hide();
 }
 
-function showPostButton(){
-	$('#post-button').show();
+function showAddButton(){
+	$('#add-button').show();
 }
 
 function clearMessages(){
