@@ -205,7 +205,7 @@ public class StealMyIdeaDataService {
 		}
 		
 		if (offset != null && size != null) {
-			sortAndPaginationClause = " offset " + offset + " limit " + size;
+			sortAndPaginationClause = sortAndPaginationClause + " offset " + offset + " limit " + size;
 		}
 		
 		String queryToUse = String.format(query, sortAndPaginationClause);
@@ -407,6 +407,7 @@ public class StealMyIdeaDataService {
 		idea.setIdeaDate(results.getString("idea_date"));
 		idea.setStealStatus(results.getString("steal_status"));
 		idea.setStealStatusDescription(results.getString("steal_status_description"));
+		idea.setGreatness(results.getString("greatness"));
 		idea.setDescription(results.getString("description"));
 		idea.setStatus(results.getString("status"));
 		Timestamp statusDateTimestamp = results.getTimestamp("status_date");

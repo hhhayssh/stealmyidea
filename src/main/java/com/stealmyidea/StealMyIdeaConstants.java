@@ -25,7 +25,7 @@ public interface StealMyIdeaConstants {
 	
 	public static final int STEAL_STATUS_MAX_LENGTH = 100;
 	
-	public static final int STEAL_STATUS_DESCRIPTION_MAX_LENGTH = 100;
+	public static final int STEAL_STATUS_DESCRIPTION_MAX_LENGTH = 500;
 	
 	public static final int GREATNESS_MAX_LENGTH = 100;
 	
@@ -70,7 +70,7 @@ public interface StealMyIdeaConstants {
 	
 	public static final String SORT_DIRECTION_DESCENDING = "descending";
 	
-	public static final String DEFAULT_SORT_DIRECTION = SORT_DIRECTION_ASCENDING;
+	public static final String DEFAULT_SORT_DIRECTION = SORT_DIRECTION_DESCENDING;
 	
 	public static final List<String> SORT_DIRECTIONS = Arrays.asList(new String[] {SORT_DIRECTION_ASCENDING, SORT_DIRECTION_DESCENDING});
 	

@@ -42,9 +42,12 @@ function createIdeasHtml(ideas){
 function createIdeaHtml(idea){
 
 	var ideaHtml = '<div id="idea-container-' + idea.ideaId + '" class="idea-container">' +
-						'<div id="idea-number-container-' + idea.ideaId + '" class="idea-common-container idea-number-container">' + 
-							'<span class="idea-common-label idea-idea-number-label">Idea number:</span>' +
-							'<span class="idea-common-content idea-idea-number-content">' + nullToEmpty(idea.ideaNumber) + '</span>' + 
+						'<div id="idea-number-container-' + idea.ideaId + '" class="idea-common-container idea-number-container">' +
+							'<span class="idea-idea-number-link">' +
+								'<a href="idea/' + idea.ideaNumber + '">' + 
+									'Idea number:&nbsp;' + nullToEmpty(idea.ideaNumber) +
+								'</a>' +
+							'</span>' +
 						'</div>' +
 						'<div id="idea-idea-container-' + idea.ideaId + '" class="idea-common-container idea-idea-container">' + 
 							'<span class="idea-common-label idea-idea-label">Idea:</span>' +

@@ -9,9 +9,21 @@
 	/report/index.html?ideaNumber=1
  -->
 	<display-name>Steal My Idea</display-name>
+	<filter>
+		<filter-name>idea-filter</filter-name>
+		<filter-class>com.stealmyidea.servlet.IdeaFilter</filter-class>
+	</filter>
+	<filter-mapping>
+    	<filter-name>idea-filter</filter-name>
+    	<url-pattern>/*</url-pattern>
+	</filter-mapping>
   	<servlet>
-      	<servlet-name>stealmyidea</servlet-name>
+      	<servlet-name>stealmyidea-main</servlet-name>
       	<servlet-class>com.stealmyidea.servlet.StealMyIdeaMainServlet</servlet-class>
+   	</servlet>
+   	<servlet>
+      	<servlet-name>stealmyidea-idea</servlet-name>
+      	<servlet-class>com.stealmyidea.servlet.StealMyIdeaIdeaServlet</servlet-class>
    	</servlet>
    	<servlet>
       	<servlet-name>stealmyidea-add</servlet-name>
@@ -22,11 +34,25 @@
       	<servlet-class>com.stealmyidea.servlet.StealMyIdeaEditServlet</servlet-class>
    	</servlet>
    	<servlet-mapping>
-      	<servlet-name>stealmyidea</servlet-name>
+      	<servlet-name>stealmyidea-main</servlet-name>
       	<url-pattern>/ideas</url-pattern>
    	</servlet-mapping>
    	<servlet-mapping>
       	<servlet-name>stealmyidea-add</servlet-name>
       	<url-pattern>/add</url-pattern>
    	</servlet-mapping>
+   	<servlet-mapping>
+      	<servlet-name>stealmyidea-idea</servlet-name>
+      	<url-pattern>/idea/*</url-pattern>
+   	</servlet-mapping>
+   	<!-- 
+   	<servlet-mapping>
+      	<servlet-name>default</servlet-name>
+      	<url-pattern>/idea-static</url-pattern>
+   	</servlet-mapping>
+   	 -->
+   	<welcome-file-list>
+   		<welcome-file>index.html</welcome-file>
+   		<welcome-file>idea-static/index.html</welcome-file>
+   	</welcome-file-list>
 </web-app>

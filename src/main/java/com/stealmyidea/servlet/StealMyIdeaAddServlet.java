@@ -88,7 +88,7 @@ public class StealMyIdeaAddServlet extends AbstractStealMyIdeaServlet {
 			String greatness = ideaJsonObject.optString(StealMyIdeaConstants.JSON_GREATNESS);
 			String description = ideaJsonObject.optString(StealMyIdeaConstants.JSON_DESCRIPTION);
 			
-			messages = ideaValidator.validateInput(ideaId, ideaNumber, ideaNumber, ideaDate, stealStatusDescription, stealStatusDescription, 
+			messages = ideaValidator.validateInput(ideaId, ideaNumber, ideaNumber, ideaDate, stealStatus, stealStatusDescription, 
 					greatness, description, null, null, null, null, null, null);
 			
 			if (messages.size() > 0) {

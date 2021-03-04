@@ -29,37 +29,7 @@ function loadIdeasAndInitialize(){
 	loadIdeas();
 }
 
-function wasRequestSuccessful(response){
-	
-	if (!isDefined(response)){
-		return false;
-	}
-	
-	var status = response.status;
-	if (!isDefined(status)){
-		return false;
-	}
-	
-	if ('SUCCESS' == status){
-		return true;
-	}
-	
-	return false;
-}
 
-function doesResponseHaveMessages(response){
-	
-	if (!isDefined(response)){
-		return false;
-	}
-	
-	var messages = response.messages;
-	if (!isEmpty(messages)){
-		return true;
-	}
-	
-	return false;
-}
 
 function updateCurrentOffset(){
 	
@@ -73,6 +43,7 @@ function updateCurrentOffset(){
 function loadIdeas(){
 	
 	showLoadingContainer();
+	GLOBAL_IDEA_CONTAINER.loadMoreIdeas = false;
 	
 	var offset = GLOBAL_IDEA_CONTAINER.offset;
 	var size = GLOBAL_IDEA_CONTAINER.size;
@@ -105,6 +76,8 @@ function loadIdeas(){
 			updateCurrentOffset();
 			
 			var ideasHtml = createIdeasHtml(ideas);
+			// need to append each idea to its own container so the order stays the same so scrolling too fast
+			//doesn't mess it up
 			$('#main-content-container').append(ideasHtml);
 		}
 		else {
@@ -116,6 +89,8 @@ function loadIdeas(){
 				$('#messages-container').append(messagesHtml);
 			}
 		}
+		
+		GLOBAL_IDEA_CONTAINER.loadMoreIdeas = true;
 	})
 	.fail(function() {
 	})

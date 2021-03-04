@@ -1,10 +1,7 @@
 function postIdea(){
-	console.log('posting....');
 	disablePostButton();
 	
 	var isIdeaOk = checkIdea();
-	console.log('ok? ');
-	console.log(isIdeaOk);
 	
 	if (!isIdeaOk){
 		enablePostButton();
@@ -28,8 +25,6 @@ function postIdea(){
 			contentType: 'application/json; charset=UTF-8'}
 	)
 	.done(function(data) {
-		console.log('data..');
-		console.log(data);
 		//var selectionCriteriaContainer = $.parseJSON(data);
 		var response = $.parseJSON(data);
 		
@@ -95,13 +90,13 @@ function checkIdea(){
 	}
 	
 	var stealStatusDescription = $('#steal-status-description').val();
-	if (stealStatusDescription.length > 100){
+	if (stealStatusDescription.length > 500){
 		$('#message-container-steal-status-description').append('<span>If it\'s that involved, consult a lawyer (use 500 characters or less).</span>');
 		error = true;
 	}
 	
 	var greatness = $('#greatness').val();
-	if (greatness.length > 500){
+	if (greatness.length > 100){
 		$('#message-container-greatness').append('<span>Come on now, it ain\'t that great (use 100 characters or less).</span>');
 		error = true;
 	}

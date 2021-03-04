@@ -19,6 +19,10 @@ html, body {
 	border-bottom: thin solid black;
 }
 
+.idea-container-single {
+	border-bottom: none;
+}
+
 .idea-common-container {
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -29,6 +33,10 @@ html, body {
 }
 
 .idea-common-content {
+	
+}
+
+.idea-idea-number-link {
 	
 }
 
@@ -111,8 +119,6 @@ html, body {
 .idea-description-content {
 	
 }
-
-
 
 .add-idea-question-container {
 	margin-top: 15px;

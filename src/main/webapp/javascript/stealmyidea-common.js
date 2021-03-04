@@ -1,3 +1,35 @@
+function wasRequestSuccessful(response){
+	
+	if (!isDefined(response)){
+		return false;
+	}
+	
+	var status = response.status;
+	if (!isDefined(status)){
+		return false;
+	}
+	
+	if ('SUCCESS' == status){
+		return true;
+	}
+	
+	return false;
+}
+
+function doesResponseHaveMessages(response){
+	
+	if (!isDefined(response)){
+		return false;
+	}
+	
+	var messages = response.messages;
+	if (!isEmpty(messages)){
+		return true;
+	}
+	
+	return false;
+}
+
 function nullToEmpty(value){
 	
 	if (value == null || value == undefined){

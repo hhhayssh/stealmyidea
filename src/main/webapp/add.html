@@ -2,10 +2,10 @@
 	<head>
 		<base href="stealmyidea"/>
 		<script src="javascript/jquery-3.4.0.min.js"></script>
-		<script src="javascript/stealmyidea-common.js?20210105"></script>
-		<script src="javascript/stealmyidea-html.js?20210105"></script>
-		<script src="javascript/stealmyidea-add.js?20210105"></script>
-		<link rel="stylesheet" type="text/css" href="css/stealmyidea.css?20210105">
+		<script src="javascript/stealmyidea-common.js?20210301"></script>
+		<script src="javascript/stealmyidea-html.js?20210301"></script>
+		<script src="javascript/stealmyidea-add.js?20210301"></script>
+		<link rel="stylesheet" type="text/css" href="css/stealmyidea.css?20210301">
 		<meta name="viewport" content="initial-scale=1.0, minimum-scale=0.25, maximum-scale=5.0, user-scalable=yes">
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
@@ -20,14 +20,14 @@
 		</div>
 		<div>
 			<input type="hidden" name="target" value="idea" />
-			<table>
+			<table style="width: 100%">
 				<tr>
 					<td>
 						<div class="add-idea-question-container">
 							<span>Give it a name...</span>
 						</div>
-						<div>
-							<input name="idea" id="idea" type="text" size="100" />
+						<div style="width: 100%;">
+							<input name="idea" id="idea" type="text" style="width: 100%;"/>
 							<div id="message-container-idea"></div>
 						</div>
 					</td>
@@ -37,8 +37,8 @@
 						<div class="add-idea-question-container">
 							<span>When did you have it?</span>
 						</div>
-						<div>
-							<input name="ideaDate" id="idea-date" type="text" size="100" />
+						<div style="width: 100%;">
+							<input name="ideaDate" id="idea-date" type="text" style="width: 100%;"/>
 							<div id="message-container-idea-date"></div>
 						</div>
 					</td>
@@ -48,8 +48,8 @@
 						<div class="add-idea-question-container">
 							<span>Has it been stolen?</span>
 						</div>
-						<div>
-							<input name="stealStatus" id="steal-status" type="text" size="100" />
+						<div style="width: 100%;">
+							<input name="stealStatus" id="steal-status" type="text" style="width: 100%;"/>
 							<div id="message-container-steal-status"></div>
 						</div>
 					</td>
@@ -59,7 +59,7 @@
 						<div class="add-idea-question-container">
 							<span>Who stole it?</span>
 						</div>
-						<div>
+						<div style="width: 100%;">
 							<textarea name="stealStatusDescription" id="steal-status-description" rows="5" style="width: 100%;"></textarea>
 							<div id="message-container-steal-status-description"></div>
 						</div>
@@ -70,8 +70,8 @@
 						<div class="add-idea-question-container">
 							<span>How great is it?</span>
 						</div>
-						<div>
-							<input name="greatness" id="greatness" type="text" size="100" />
+						<div style="width: 100%;">
+							<input name="greatness" id="greatness" type="text" style="width: 100%;" />
 							<div id="message-container-greatness"></div>
 						</div>
 					</td>
@@ -81,7 +81,7 @@
 						<div class="add-idea-question-container">
 							<span>What's the idea?</span>
 						</div>
-						<div>
+						<div style="width: 100%;">
 							<textarea name="description" id="description" rows="5" style="width: 100%;"></textarea>
 							<div id="message-container-description"></div>
 						</div>
