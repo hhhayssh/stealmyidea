@@ -39,7 +39,7 @@ public class IdeaFilter implements Filter, Serializable {
 		if (matcher.matches()) {
 			String ideaNumber = matcher.group(1);
 			request.setAttribute("ideaNumber", ideaNumber);
-			request.getRequestDispatcher("/idea-static/index.html").include(request, response);
+			request.getRequestDispatcher("/idea-static.html").include(request, response);
 			return;
 		}
 		

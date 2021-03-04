@@ -83,8 +83,6 @@ function loadIdeas(){
 		else {
 			if (doesResponseHaveMessages(response)){
 				$('#messages-container').empty();
-				console.log('messages...');
-				console.log(response.messages);
 				var messagesHtml = createMessagesHtml(response.messages);
 				$('#messages-container').append(messagesHtml);
 			}

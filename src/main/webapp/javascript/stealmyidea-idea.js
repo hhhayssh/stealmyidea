@@ -3,16 +3,13 @@ $(document).ready(
 		loadIdea();
 });
 
-console.log('blah blah blah.');
-
 function loadIdea(){
 	//get the idea number from the url
 	var currentUrl = window.location.href;
-	console.log('current url = ' + currentUrl);
 	
 	var ideaNumber = currentUrl.match('idea/(\\d+)')[1];
 	//http://localhost:8080/stealmyidea/idea/12
-	var url = '/stealmyidea/ideas?target=ideas&ideaNumber=' + ideaNumber;
+	var url = '/ideas?target=ideas&ideaNumber=' + ideaNumber;
 	
 	$.ajax({url: url,
 		contentType: 'application/json; charset=UTF-8'}
@@ -42,8 +39,6 @@ function loadIdea(){
 		else {
 			if (doesResponseHaveMessages(response)){
 				$('#messages-container').empty();
-				console.log('messages...');
-				console.log(response.messages);
 				var messagesHtml = createMessagesHtml(response.messages);
 				$('#messages-container').append(messagesHtml);
 			}

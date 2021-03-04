@@ -30,7 +30,7 @@ function addIdea(){
 		
 		if ('SUCCESS' == response.status){
 			hideAddButton();
-			$('#message-container-add').append('<div>Your idea was successfully added ... Yoink!  You can see it on the <a href="index.html">front page</a> now.</div>');
+			$('#message-container-add').append('<div>Your idea was successfully added ... Yoink!  You can see it on the <a href="/">front page</a> now.</div>');
 		}
 		else if ('ERROR' == response.status){
 			showAddButton();
