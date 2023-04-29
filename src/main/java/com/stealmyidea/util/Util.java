@@ -13,6 +13,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.stealmyidea.model.Idea;
+
 public class Util {
 	
 	private static final Logger log = Logger.getLogger(Util.class);
@@ -271,7 +273,7 @@ public class Util {
 		for (int index = 0; index < values.size(); index++){
 			String value = values.get(index);
 			
-			String valueToUse = value;
+			String valueToUse = unNull(value);
 			if (trimValues){
 				valueToUse = valueToUse.trim();
 			}
@@ -379,6 +381,100 @@ public class Util {
 		}
 		
 		return parsedInt;
+	}
+	
+	public static String convertIdeasToCSV(List<Idea> ideas, String header) {
+		
+		StringBuilder stringBuilder = new StringBuilder();
+		
+		if (header != null) {
+			stringBuilder.append(header).append("\n");
+		}
+		
+		for (int index = 0; index < ideas.size(); index++) {
+			Idea idea = ideas.get(index);
+			
+			String ideaCSV = convertIdeaToCSV(idea);
+			
+			stringBuilder.append(ideaCSV).append("\n");
+		}
+		
+		String ideasCSV = stringBuilder.toString();
+		
+		return ideasCSV;
+	}
+	
+	public static String convertIdeaToCSV(Idea idea) {
+		
+		List<String> values = new ArrayList<String>();
+		
+		values.add(toString(idea.getIdeaId()));
+		values.add(toString(idea.getIdeaNumber()));
+		values.add(toString(idea.getIdea()));
+		values.add(toString(idea.getIdeaDate()));
+		values.add(toString(idea.getStealStatus()));
+		values.add(toString(idea.getStealStatusDescription()));
+		values.add(toString(idea.getGreatness()));
+		values.add(toString(idea.getDescription()));
+		values.add(toString(idea.getStatus()));
+		values.add(toString(idea.getStatusDate()));
+		values.add(toString(idea.getEnterDate()));
+		values.add(toString(idea.getModificationDate()));
+		
+		String csvValue = toCsvString(values);
+		
+		return csvValue;
+	}
+	
+	public static String toCSVValue(Object value) {
+		
+		if (value == null) {
+			return "";
+		}
+		
+		String csvValue = quoteCSVValue(value);
+		
+		return csvValue;
+	}
+	
+	public static String quoteCSVValue(Object value) {
+		
+		String stringValue = toString(value);
+		
+		if (value == null) {
+			return "";
+		}
+		
+		if (!stringValue.contains(",")) {
+			return stringValue;
+		}
+		
+		String csvValue = stringValue;
+		if (stringValue.contains("\"")) {
+			csvValue = stringValue.replace("\"", "\"\"");
+		}
+		
+		csvValue = "\"" + csvValue + "\"";
+		
+		return csvValue;
+	}
+	
+	public static String toString(Object value) {
+		
+		String stringValue = toString(value, null);
+		
+		return stringValue;
+	}
+	
+	public static String toString(Object value, String defaultValue) {
+		
+		if (value == null) {
+			return defaultValue;
+		}
+		
+		String stringValue = String.valueOf(value);
+		
+		return stringValue;
 	}
 	
 	public static String replaceUrlCharacters(String value){

@@ -1,8 +1,12 @@
 package com.stealmyidea.servlet;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +18,7 @@ import com.stealmyidea.StealMyIdeaConstants;
 import com.stealmyidea.model.GenericServerResponse;
 import com.stealmyidea.model.Idea;
 import com.stealmyidea.util.SanitizeUtil;
+import com.stealmyidea.util.Util;
 
 //
 public class StealMyIdeaMainServlet extends AbstractStealMyIdeaServlet {
@@ -27,6 +32,7 @@ public class StealMyIdeaMainServlet extends AbstractStealMyIdeaServlet {
 	protected static final String TARGET_IDEAS = "ideas";
 	protected static final String TARGET_IDEA = "idea";
 	protected static final String TARGET_IDEA_COUNT = "ideaCount";
+	protected static final String TARGET_EXPORT_IDEAS = "exportIdeas";
 	
 	//(ideaId, ideaNumber, idea, ideaDate, stealStatus, stealStatusDescription, greatness, description, enterDate, modificationDate)
 	protected static final String PARAMETER_NAME_IDEA_ID = "ideaId";
@@ -57,6 +63,11 @@ public class StealMyIdeaMainServlet extends AbstractStealMyIdeaServlet {
 		String jsonResponse = null;
 
 		try {
+			
+//			if (Math.random() > 0.5) {
+//				throw new Exception("blah");
+//			}
+			
 			GenericServerResponse serverResponse = new GenericServerResponse();
 
 			String target = getParameter(request, PARAMETER_NAME_TARGET);
@@ -120,6 +131,38 @@ public class StealMyIdeaMainServlet extends AbstractStealMyIdeaServlet {
 			}
 			else if (TARGET_IDEA_COUNT.equals(target)) {
 				Integer ideaCount = dataService.getIdeaCount();
+				String ideaCountString = null;
+				if (ideaCount != null) {
+					ideaCountString = ideaCount.toString();
+				}
+				Map<String, String> ideaCountData = new HashMap<String, String>();
+				ideaCountData.put("ideaCount", ideaCountString);
+				serverResponse = new GenericServerResponse(ideaCountData);
+				writeGenericServerResponse(response, serverResponse);
+				return;
+			}
+			else if (TARGET_EXPORT_IDEAS.equals(target)) {
+				List<Idea> allIdeas = dataService.getAllIdeas();
+				
+				String header = "idea_id,idea_number,idea,idea_date,steal_status,steal_status_description,greatness,description,status,status_date,enter_date,modification_date";
+				String ideasToExport = Util.convertIdeasToCSV(allIdeas, header);
+				
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+				String exportDate = formatter.format(new Date());
+				
+				String filename = "idea-export-" + exportDate + ".csv";
+				
+				response.setContentType("text/csv");
+		        response.setContentLength(ideasToExport.length());
+
+				response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
+				
+				OutputStream outputStream = response.getOutputStream();
+				
+				Util.writeBufferedBytes(ideasToExport.getBytes(), outputStream);
+				
+				return;
+				
 			}
 		}
 		catch (Exception e) {

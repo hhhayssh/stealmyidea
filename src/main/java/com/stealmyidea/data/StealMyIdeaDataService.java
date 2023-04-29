@@ -108,6 +108,14 @@ public class StealMyIdeaDataService {
 		return defaultIdeas;
 	}
 	
+	public List<Idea> getAllIdeas(){
+		
+		List<Idea> allIdeas = getIdeas(null, null, null, null, null, null, null, null, null, null, StealMyIdeaConstants.DEFAULT_SORT_FIELD_NAME,
+				StealMyIdeaConstants.DEFAULT_SORT_DIRECTION, null, null);
+		
+		return allIdeas;
+	}
+	
 	public Integer getIdeaCount() {
 		
 		Integer ideaCount = getIdeaCount(null, null, null, null, null, null, null, null, null, null);
@@ -123,8 +131,6 @@ public class StealMyIdeaDataService {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet results = null;
-		
-		List<Idea> ideas = new ArrayList<Idea>();
 		
 		StringBuilder stringBuilder = new StringBuilder(SELECT_IDEA_COUNT);
 		List<Object> parameters = new ArrayList<Object>();
@@ -152,7 +158,7 @@ public class StealMyIdeaDataService {
 			results = statement.executeQuery();
 			
 			while (results.next()){
-				ideaCount = results.getInt(0);
+				ideaCount = results.getInt(1);
 			}
 		}
 		catch (Exception e){
